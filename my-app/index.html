@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Prediction App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+      Classificação de movimento do corpo humano
+    </h1>
+    <p class="text-gray-600 mb-6 text-center">
+      Selecione um arquivo ZIP do Phyphox com os dados do acelerômetro e em seguida faça a predição.
+    </p>
+    <form action="/predict" method="post" enctype="multipart/form-data" class="space-y-4">
+      <label class="block">
+        <span class="sr-only">Choose CSV</span>
+        <input type="file" name="uploaded_file" 
+               class="block w-full text-sm text-gray-500 
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-blue-50 file:text-blue-700
+                      hover:file:bg-blue-100" required>
+      </label>
+      <button type="submit" 
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition">
+        Faça a predição
+      </button>
+    </form>
+    <p class="text-xs text-gray-400 mt-4 text-center">
+      Somente arquivos ZIP obtidos pelo aplicativo Phyphox são suportados.
+    </p>
+
+    <hr class="my-6">
+
+
+<footer class="text-center text-xs text-slate-500 space-y-1">
+  <p>
+    MNPEF – Polo UFMT / Barra do Garças
+  </p>
+  <p>
+    Aplicação desenvolvida para fins acadêmicos
+  </p>
+  <p>
+    <a href="https://github.com/gbs1234/accel"
+       target="_blank"
+       class="text-blue-600 hover:underline">
+      🔗 GitHub do projeto
+    </a>
+  </p>
+  <p>
+    © 2025
+  </p>
+</footer>
+
+
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+# IDE and OS files
+.vscode
+.idea
+.DS_Store
+
+# Version control
+.git
+.gitignore
+
+# Compiled files and caches
+__pycache__/
+*.pyc
+
+# Local environment variables
+.env
