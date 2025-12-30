@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import os
 import zipfile
-
+from collections import Counter
 
 
 def make_windows(df, category='unknown'):
@@ -55,6 +55,15 @@ def make_windows(df, category='unknown'):
 # Initialize the Flask app
 app = Flask(__name__)
 
+LABEL_TO_EMOJI = {
+    "steady": "🧍",
+    "walk": "🚶",
+    "run": "🏃",
+    "dance": "💃",
+}
+
+
+
 # Load the trained model
 try:
     with open('knn_model.joblib', 'rb') as model_file:
@@ -85,6 +94,9 @@ def predict():
         with zipfile.ZipFile(file) as z:
             with z.open("Raw Data.csv") as f:
                 df = pd.read_csv(f, header=0, names=custom_names)  
+                
+    elif ext in [".csv"]:
+        df = pd.read_csv(file, header=0, names=custom_names) 
     else:
         return {"error": f"Unsupported file type: {ext}"}, 400
 
@@ -105,13 +117,27 @@ def predict():
     # Make a prediction
     predictions = model.predict(X)  # There is a result for each row of X
     
-    result = {
-            "predictions": predictions.tolist(),
-            "count": len(predictions)
-        }
+      
+    
+    results = []
+    for i, label in enumerate(predictions):
+        results.append({
+            "time": i * 2,                     # segundos
+            "label": label,
+            "emoji": LABEL_TO_EMOJI.get(label, "❓"),
+        })
+
+    
+   # 4. resumo (quantos "walk", "dance", etc)
+    counts = Counter(predictions)
 
     # Return the result
-    return  result
+    return render_template(
+        "results.html",
+        results=results,
+        counts=counts,
+        total=len(predictions),
+    )
 
 
 
