@@ -16,30 +16,30 @@
     <div class="mb-6 grid grid-cols-4 gap-4 text-center">
       <div class="p-3 rounded-xl bg-slate-100">
         <div class="text-3xl mb-1">🧍</div>
-        <div class="text-sm text-slate-500">Steady</div>
+        <div class="text-sm text-slate-500">Parado</div>
         <div class="text-lg font-semibold">
-          {{ counts.get('steady', 0) }}
+          {{ counts.get('Parado', 0) }}
         </div>
       </div>
       <div class="p-3 rounded-xl bg-slate-100">
         <div class="text-3xl mb-1">🚶</div>
-        <div class="text-sm text-slate-500">Walk</div>
+        <div class="text-sm text-slate-500">Caminhando</div>
         <div class="text-lg font-semibold">
-          {{ counts.get('walk', 0) }}
+          {{ counts.get('Caminhando', 0) }}
         </div>
       </div>
       <div class="p-3 rounded-xl bg-slate-100">
         <div class="text-3xl mb-1">💃</div>
-        <div class="text-sm text-slate-500">Dance</div>
+        <div class="text-sm text-slate-500">Dançando</div>
         <div class="text-lg font-semibold">
-          {{ counts.get('dance', 0) }}
+          {{ counts.get('Dançando', 0) }}
         </div>
       </div>
         <div class="p-3 rounded-xl bg-slate-100">
         <div class="text-3xl mb-1">🏃</div>
-        <div class="text-sm text-slate-500">Run</div>
+        <div class="text-sm text-slate-500">Correndo</div>
         <div class="text-lg font-semibold">
-         {{ counts.get('run', 0) }}
+         {{ counts.get('Correndo', 0) }}
   </div>
 </div>
 
@@ -61,7 +61,7 @@
           <span class="text-2xl">{{ item.emoji }}</span>
           <div>
             <div class="text-sm font-semibold capitalize">
-              {{ item.label }}
+              {{ item.label_pt }}
             </div>
             <div class="text-xs text-slate-500">
               Tempo: {{ item.time }}s – {{ item.time + 2 }}s

@@ -55,11 +55,23 @@ def make_windows(df, category='unknown'):
 # Initialize the Flask app
 app = Flask(__name__)
 
-LABEL_TO_EMOJI = {
-    "steady": "🧍",
-    "walk": "🚶",
-    "run": "🏃",
-    "dance": "💃",
+LABEL_INFO = {
+    "steady": {
+        "label_pt": "Parado",
+        "emoji": "🧍",
+    },
+    "walk": {
+        "label_pt": "Caminhando",
+        "emoji": "🚶",
+    },
+    "run": {
+        "label_pt": "Correndo",
+        "emoji": "🏃",
+    },
+    "dance": {
+        "label_pt": "Dançando",
+        "emoji": "💃",
+    },
 }
 
 
@@ -120,22 +132,40 @@ def predict():
       
     
     results = []
-    for i, label in enumerate(predictions):
-        results.append({
-            "time": i * 2,                     # segundos
-            "label": label,
-            "emoji": LABEL_TO_EMOJI.get(label, "❓"),
+    
+    for i, label_model in enumerate(predictions):
+        info = LABEL_INFO.get(label_model, {
+            "label_pt": "Desconhecido",
+            "emoji": "❓",
         })
 
+        results.append({
+            "time": i * 2,                 # segundos
+            "label_model": label_model,   # inglês (opcional)
+            "label_pt": info["label_pt"],  # português (mostrado)
+            "emoji": info["emoji"],
+        })
+        
+
     
-   # 4. resumo (quantos "walk", "dance", etc)
-    counts = Counter(predictions)
+   # Resumo (quantos "walk", "dance", etc)
+    counts_model = Counter(predictions)
+    
+
+
+    # Converter para português (interface)
+    counts_pt = {
+        LABEL_INFO[label]["label_pt"]: count
+        for label, count in counts_model.items()
+        if label in LABEL_INFO
+    }
+
 
     # Return the result
     return render_template(
         "results.html",
         results=results,
-        counts=counts,
+        counts=counts_pt,
         total=len(predictions),
     )
 
