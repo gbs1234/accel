@@ -25,6 +25,13 @@ Os movimentos analisados são:
 
 Cada classificação corresponde a uma janela temporal de **2 segundos**.
 
+
+Importante destacar que o aplicativo foi desenvolvido para promover a transposição didática do conceito de aceleração, porém em vez de focar em situações idealizadas, o aplicativo busca mudar a perspectiva do estudante para a identificação de padrões não-uniformes do movimento.
+
+A aceleração registrada pelo smartphone, apesar dosde conter ruídos, descreve de forma mais próxima o movimento real do corpo humano. Essa característica cria uma oportunidade pedagógica importante, pois permite discutir os limites dos modelos teóricos tradicionalmente trabalhados na escola. Além disso, permite fazer reflexões sobre incertezas, variações naturais e a interpretação de dados experimentais reais.
+
+Assim, a aceleração deixa de ser vista apenas como um número obtido a partir de fórmulas e passa a ser compreendida como uma informação física significativa, capaz de descrever e diferenciar movimentos mesmo em situações que fogem das condições ideais apresentadas nos livros didáticos.
+
 ---
 
 ## 📱 Geração dos Dados com o aplicativo PHYPHOX
@@ -81,8 +88,8 @@ O aplicativo possui uma interface web simples, acessível pelo navegador:
 
 1. Clone o repositório:
 
-git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
-cd SEU_REPOSITORIO
+git clone https://github.com/gbs1234/accel.git
+cd accel
 
 
 
@@ -145,6 +152,8 @@ Ele pode ser utilizado em atividades envolvendo:
 - Projetos interdisciplinares
 
 Este projeto é destinado a fins educacionais e acadêmicos.
+
+
 
 Para referenciar esse código, use:
 
